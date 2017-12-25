@@ -4,13 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   entry: [
-    './src/app/index.jsx'
+    './src/index.jsx'
   ],
 
   output: {
-    path: path.resolve(__dirname, 'dist/assets'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
-    publicPath: '/assets/'
+    // publicPath: '/assets/'
   },
 
   module: {
@@ -45,6 +45,10 @@ const config = {
         use: ['url-loader?limit=8192'],
       },
       {
+        test: /\.jpe?g$|\.ico$|\.json$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'file-loader?name=[name].[ext]' // <-- retain original file name
+      },
+      {
         test: /\.(mp4|ogg|svg)$/,
         use: ['file-loader']
       },
@@ -70,9 +74,8 @@ const config = {
   resolve: {
     modules: [
       'node_modules',
-      path.resolve(__dirname, 'src/app'),
-      path.resolve(__dirname, 'src/app/common'),
-      path.resolve(__dirname, 'src/app/components')
+      path.resolve(__dirname, 'src/common'),
+      path.resolve(__dirname, 'src/components')
     ],
     extensions: ['.js', '.jsx', '.json']
   },
@@ -81,7 +84,7 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.resolve(__dirname, 'src/app/index.html'),
+      template: path.resolve(__dirname, 'src/index.html'),
       inject: 'body'
     })
   ],
