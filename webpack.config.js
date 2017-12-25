@@ -8,7 +8,7 @@ const config = {
   ],
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     filename: 'app.js',
     // publicPath: '/assets/'
   },
