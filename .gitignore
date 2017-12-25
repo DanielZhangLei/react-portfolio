@@ -20,9 +20,9 @@ npm-debug.log
 
 # Distribution
 coverage/
-dist/
-docs/
 *.iml
+# dist/
+# docs/
 
 # Python
 *.pyc
